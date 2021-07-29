@@ -3,27 +3,29 @@
 const express = require('express');
 const path = require('path');
 
-const main_dir = "F://LEARNINGS//learn_web//web_app_convo//static"
+PORT = process.env.PORT || 3000;
+// const main_dir = "F://LEARNINGS//learn_web//web_app_convo//static"
 const app = express();
-const port = 3000;
+// const port = 3000;
 
 app.use(
     express.urlencoded({
         extended:true
     })
 );
+//app.use(express.static("../static"));
 
 app.use(express.json());
 
 app.get('/favicon.ico',(req,res)=>{
-    res.sendFile(path.join(__dirname,"//favicon.ico"));
+    res.sendFile("./favicon.ico");
 });
 
 app.get('/',(req,res)=>{
     res.redirect('/login');
 });
 app.get('/login',(req,res)=>{
-    res.sendFile(path.join(main_dir,"//frontend//login.html"));
+    res.sendFile("../static/frontend/login.html");
 });
 
 app.post('/login/user',(req,res)=>{
@@ -34,5 +36,5 @@ app.post('/login/user',(req,res)=>{
     res.send(data);
     res.end();
 });
-app.listen(port);
-console.log("server is listening in port",port)
+app.listen(PORT);
+console.log("server is listening in port",PORT)

@@ -5,7 +5,7 @@
 // console.log(result);
 
 async function login(username,password){
-    await fetch('http://localhost:3000/login/user',{
+    await fetch('https://mysterious-journey-14994.herokuapp.com/login/user',{
         method:"POST",
         body:JSON.stringify({username:username,password:password}),
         headers:{
